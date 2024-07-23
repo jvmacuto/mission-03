@@ -1,0 +1,39 @@
+.hero-container {
+  position: relative;
+  width: 100%;
+  height: 50vh; /* Full height of the viewport */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: auto;
+}
+
+.hero-container > img {
+  width: 100%;
+  height: 50vh; /* Adjust the height to cover the viewport height */
+  object-fit: cover; /* Cover the container without losing aspect ratio */
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.hero-content {
+  color: #fff; /* White text color */
+  z-index: 1; /* Ensure the content is above the background image */
+}
+
+.hero-cta-button {
+  background-color: #007bff; /* Example button color */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin-top: 20px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.hero-cta-button:hover {
+  background-color: #0056b3; /* Darker shade on hover */
+}

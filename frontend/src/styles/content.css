@@ -1,0 +1,119 @@
+/*main container*/
+.content-container {
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 2rem;
+}
+
+/*second content*/
+.second-content {
+  display: flex;
+  padding: 20px; /* Adds space inside the element */
+  margin: 20px 0; /* Adds space outside, separating it from other content */
+  background-color: #f5f5f5; /* Light background to distinguish the section */
+  border-radius: 8px; /* Softens the corners */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.second-content > div {
+  width: 100%;
+}
+
+.breakdown-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.man-in-car {
+  width: 80%;
+  height: 75%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.second-content h3,
+.second-content h4 {
+  color: #333; /* Darker text for better readability */
+  margin-bottom: 16px; /* Space below headings */
+}
+
+.second-content ul {
+  list-style-type: disc; /* Adds bullets to list */
+  padding-left: 20px; /* Indents list */
+}
+
+.second-content li {
+  margin-bottom: 8px; /* Space between list items */
+}
+
+/*third content*/
+.third-content {
+  display: flex; /* Stack elements vertically */
+  align-items: center; /* Center-align the content */
+  padding: 20px;
+  background-color: #f0f0f0; /* Light background color for contrast */
+  border-radius: 8px; /* Rounded corners */
+  margin: 20px 0; /* Space above and below the section */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.third-content-statement {
+  text-align: left; /* Center-align the text */
+  max-width: 600px; /* Limit the width for readability */
+}
+
+.third-content-statement h3 {
+  color: #333; /* Dark color for the heading */
+  margin-bottom: 15px; /* Space below the heading */
+}
+
+.third-content-statement p {
+  line-height: 1.6; /* Improve readability */
+  margin-bottom: 20px; /* Space below the paragraph */
+}
+
+.third-content img {
+  max-width: 100%; /* Ensure the image is responsive */
+  height: auto; /* Maintain aspect ratio */
+  margin-top: 20px; /* Space above the image */
+}
+
+/*fourth content*/
+.fourth-content {
+  display: flex;
+  border: 1px solid #000;
+  align-items: center;
+  justify-content: center;
+}
+
+.fourth-content-image {
+  justify-content: center;
+  margin-left: 1rem;
+  align-items: center;
+  width: 150%;
+}
+.fourth-content-image > img {
+  height: 75%;
+  width: 90%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/*Keyframes*/
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px); /* Start slightly off-screen */
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.content-container {
+  animation: fadeIn 1s ease-out forwards; /* Adjust timing as needed */
+}
