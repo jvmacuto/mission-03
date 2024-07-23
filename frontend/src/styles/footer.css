@@ -1,0 +1,38 @@
+.site-footer {
+  background-color: #4535c1; /* Dark background color */
+  color: #fff; /* White text color */
+  text-align: center; /* Center-align the text */
+  padding: 20px 0; /* Padding above and below */
+  margin-top: 40px; /* Space between content and footer */
+}
+
+.container {
+  max-width: 1200px; /* Maximum width of the content */
+  margin: auto; /* Center the container */
+  display: flex; /* Use flexbox for layout */
+  justify-content: space-between; /* Space between items */
+  align-items: center; /* Align items vertically */
+}
+
+.footer-links {
+  list-style: none; /* Remove default list styling */
+  padding: 0; /* Remove default padding */
+}
+
+.footer-links li {
+  display: inline; /* Display links in a line */
+  margin-right: 20px; /* Space between links */
+}
+
+.footer-links li:last-child {
+  margin-right: 0; /* No space after the last item */
+}
+
+.footer-links a {
+  color: #fff; /* White text color for links */
+  text-decoration: none; /* Remove underline from links */
+}
+
+.footer-links a:hover {
+  text-decoration: underline; /* Underline on hover */
+}
