@@ -94,16 +94,7 @@ function Content() {
           </div>
         </div>
 
-        <div className="fourth-content">
-          <div className="fourth-content-image">
-            <img src={businessman} alt="" />
-          </div>
-          <div className="fourth-content-statement">
-            {contentElements[currentContentIndex]}
-            <button onClick={goToPreviousContent}>Previous</button>
-            <button onClick={goToNextContent}>Next</button>
-          </div>
-        </div>
+
       </div>
     </>
   );

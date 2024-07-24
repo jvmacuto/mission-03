@@ -20,7 +20,7 @@ const generateInterviewQuestions = async (req, res) => {
     const { jobTitle, userMessages } = req.body;
 
     // Generate a single interview question
-    const prompt = `Generate an interview question for a ${jobTitle} position based on the following user input: ${userMessages}, in one sentence. Remove any backticks and braces`;
+    const prompt = `Generate an interview question for a ${jobTitle} position based on the following user input: ${userMessages}, in one sentence. Remove any backticks and braces. `;
     const result = await model.generateContent(prompt);
     const response = await result.response;
     const text = await response.text();
@@ -37,7 +37,7 @@ const getFeedbackOnAnswer = async (req, res) => {
   //get job title and usermessage
   const { jobTitle, userMessages } = req.body;
   //generate prompt based on user jobtitle and usermessage
-  const prompt = `Provide feedback on the following user response for a ${jobTitle} position: ${userMessages}.`;
+  const prompt = `Provide feedback on the following user response for a ${jobTitle} position: ${userMessages}, as simple as possible, and remove any special characters.`;
   const result = await model.generateContent(prompt);
   const response = await result.response;
   const text = await response.text();

@@ -9,8 +9,10 @@ const Chatbot = () => {
   const [jobTitle, setJobTitle] = useState("");
   const [input, setInput] = useState("");
   const [isExpanded, setIsExpanded] = useState(false);
-  const messagesEndRef = useRef(null);
   const [questionCount, setQuestionCount] = useState(0);
+
+  const messagesEndRef = useRef(null);
+  const textareaRef = useRef(null);
 
   //combine messages from user and ai
   let [combinedMessages, setCombinedMessages] = useState([
@@ -27,18 +29,25 @@ const Chatbot = () => {
     e.preventDefault();
     console.log(jobTitle);
     console.log("Click button ran here!");
+
+    // Check if input is empty
     if (!input.trim()) return;
 
-    //add question count
+    //add question count to limit questions
     setQuestionCount(questionCount + 1);
+
     // Add user message to state and clear input field
     const newUserMessage = {
       sender: "user",
       text: input,
       timestamp: Date.now(),
     };
+
+    //add user message to state
     const newUserMessages = [...userMessages, newUserMessage];
     setUserMessages(newUserMessages);
+
+    //clear input field
     setInput("");
 
     //send jobtitle and user message to backend
@@ -47,8 +56,7 @@ const Chatbot = () => {
       userMessages: input,
     };
 
-    // Send user message to backend using Fetch API
-    //add while loop to generate 6 questions
+    //send user message to backend 6 times
     if (questionCount < 6) {
       fetch("http://localhost:3000/generateInterviewQuestions", {
         method: "POST",
@@ -67,7 +75,10 @@ const Chatbot = () => {
           setAiMessages((prevAiMessages) => [...prevAiMessages, newAiMessage]);
         })
         .catch((err) => console.log(err));
-    } else if (questionCount === 6) {
+    }
+
+    //stop interview questions and provide feedback
+    else if (questionCount === 6) {
       const newAiMessage = {
         sender: "ai",
         text: "Thank you for chatting with me! I will now provide your feedback.",
@@ -75,8 +86,7 @@ const Chatbot = () => {
       };
       setAiMessages((prevAiMessages) => [...prevAiMessages, newAiMessage]);
 
-      //send jobtitle and user message to backend
-      // Combine all user messages into a single string
+      // Combine all user messages into one string
       const combinedUserMessages = userMessages.reduce(
         (acc, message) => acc + " " + message.text,
         ""
@@ -117,6 +127,13 @@ const Chatbot = () => {
     }
   };
 
+  useEffect(() => {
+    if (textareaRef.current) {
+      textareaRef.current.style.height = "auto";
+      textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`;
+    }
+  }, [input]);
+
   // Function to toggle chatbot modal
   const toggleChatbot = () => {
     setIsExpanded(!isExpanded);
@@ -133,6 +150,7 @@ const Chatbot = () => {
     (a, b) => a.timestamp - b.timestamp
   );
 
+  //initial prompt
   const fetchGreetings = async () => {
     try {
       const response = await axios.post("http://localhost:3000/chatbot", {
@@ -190,16 +208,20 @@ const Chatbot = () => {
             <div ref={messagesEndRef} />
           </div>
           <div className="submit-message">
-            <input
+            <textarea
+              ref={textareaRef}
               type="text"
               value={input}
               onChange={(e) => setInput(e.target.value)}
               placeholder="Type a message..."
               onKeyDown={(e) => {
-                if (e.key === "Enter") {
+                if (e.key === "Enter" && !e.shiftKey) {
+                  e.preventDefault();
                   sendMessage(e);
                 }
               }}
+              rows={1}
+              style={{ overflow: "hidden", resize: "none" }}
             />
             <button onClick={sendMessage}>Send</button>
           </div>

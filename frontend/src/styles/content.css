@@ -80,23 +80,29 @@
   margin-top: 20px; /* Space above the image */
 }
 
-/*fourth content*/
+/* fourth content */
 .fourth-content {
   display: flex;
   border: 1px solid #000;
   align-items: center;
   justify-content: center;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  margin-top: 20px;
 }
 
 .fourth-content-image {
+  display: flex;
   justify-content: center;
-  margin-left: 1rem;
   align-items: center;
-  width: 150%;
+  margin-left: 1rem;
+  width: 150px; /* Set a reasonable width for the image container */
 }
+
 .fourth-content-image > img {
-  height: 75%;
-  width: 90%;
+  max-width: 100%; /* Ensure the image fits within the container */
+  height: 100%;
   object-fit: cover;
   object-position: center;
 }
